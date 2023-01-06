@@ -56,7 +56,7 @@
 
 
             zoomImage.addEventListener('mouseleave' , function(){
-                this.style.backgroundSize = 'cover'
+                this.style.backgroundSize = 'contain'
                 this.style.backgroundPosition = 'center'
             })
         }
