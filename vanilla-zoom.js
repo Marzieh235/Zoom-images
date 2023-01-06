@@ -33,11 +33,32 @@
 
                 if (elem.classList.contains('small-preview')) {
                     zoomImage.style.backgroundImage = `url(${elem.src})`
-
                 }
 
             })
 
+
+            zoomImage.addEventListener('mouseenter', function () {
+                this.style.backgroundSize = '250%';
+            })
+
+            zoomImage.addEventListener('mousemove', function (e) {
+                let dimentions = this.getBoundingClientRect();
+
+                let x = e.clientX - dimentions.left
+                let y = e.clientY - dimentions.top
+
+                x = Math.round(100 / (dimentions.width / x));
+                y = Math.round(100 / (dimentions.height / y));
+
+                this.style.backgroundPosition =`${x}% ${y}%`
+            })
+
+
+            zoomImage.addEventListener('mouseleave' , function(){
+                this.style.backgroundSize = 'cover'
+                this.style.backgroundPosition = 'center'
+            })
         }
     })
 
